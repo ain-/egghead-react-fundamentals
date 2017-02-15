@@ -1,4 +1,5 @@
 import React from 'react';
+import Heart from './Heart';
 
 class App extends React.Component {
   constructor() {
@@ -20,7 +21,7 @@ class App extends React.Component {
         <Widget update={this.update.bind(this)} />
         
         <h1>{this.state.txt} - {this.state.cat}</h1> 
-        <b>Bold</b>
+        <Button>I <Heart /> React</Button>
       </div>
       );
   }
@@ -37,5 +38,7 @@ App.defaultProps = {
 
 const Widget = (props) =>
   <input type="text" onChange={props.update} />
+
+const Button = (props) => <button>{props.children}</button>
 
 export default App;
