@@ -26,8 +26,16 @@ class App extends React.Component {
       b: this.refs.b.value});
   }
 
+  componentWillMount() {
+    console.log('componentWillMount');
+  }
+  componentDidMount() {
+    console.log('componentDidMount');
+  }
+
   render() {
-    let txt = this.props.txt;    
+    let txt = this.props.txt;  
+    console.log('render');  
     return (
       <div>
         <Widget update={this.update.bind(this)} />
