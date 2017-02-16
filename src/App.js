@@ -7,7 +7,9 @@ class App extends React.Component {
     this.state = {
       txt: 'this is the state txt',
       cat: 0,
-      currentEvent: '---'
+      currentEvent: '---',
+      a: '',
+      b: ''
     }
     this.update2 = this.update2.bind(this);
   }
@@ -17,6 +19,11 @@ class App extends React.Component {
   update2(e) {
     this.setState({currentEvent: e.type});
   }
+  update3() {
+    this.setState({a: this.refs.a.value,
+      b: this.refs.b.value});
+  }
+
   render() {
     let txt = this.props.txt;    
     return (
@@ -42,6 +49,17 @@ class App extends React.Component {
 
           cols="30" rows="10"/>
         <h1>{this.state.currentEvent}</h1>
+        <input 
+          ref="a"
+          type="text"
+          onChange={this.update3.bind(this)}
+        /> {this.state.a}
+        <br />
+        <input 
+          ref="b"
+          type="text"
+          onChange={this.update3.bind(this)}
+        /> {this.state.b}
       </div>
       );
   }
