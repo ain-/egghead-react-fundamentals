@@ -6,11 +6,16 @@ class App extends React.Component {
     super();
     this.state = {
       txt: 'this is the state txt',
-      cat: 0
+      cat: 0,
+      currentEvent: '---'
     }
+    this.update2 = this.update2.bind(this);
   }
   update(e) {
-    this.setState({txt: e.target.value})
+    this.setState({txt: e.target.value});
+  }
+  update2(e) {
+    this.setState({currentEvent: e.type});
   }
   render() {
     let txt = this.props.txt;    
@@ -23,6 +28,20 @@ class App extends React.Component {
         <h1>{this.state.txt} - {this.state.cat}</h1> 
         <Button>I <Heart /> React</Button>
         <Title text="123456"/>
+        <textarea 
+          onKeyPress={this.update2}
+          onCopy={this.update2}
+          onPaste={this.update2}
+          onCut={this.update2}
+          onFocus={this.update2}
+          onBlur={this.update2}
+          onTouchStart={this.update2}   
+          onTouchMove={this.update2}          
+          onTouchEnd={this.update2}          
+                 
+
+          cols="30" rows="10"/>
+        <h1>{this.state.currentEvent}</h1>
       </div>
       );
   }
