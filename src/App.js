@@ -22,6 +22,7 @@ class App extends React.Component {
         
         <h1>{this.state.txt} - {this.state.cat}</h1> 
         <Button>I <Heart /> React</Button>
+        <Title text="123456"/>
       </div>
       );
   }
@@ -30,15 +31,28 @@ class App extends React.Component {
 App.propTypes = {
   txt: React.PropTypes.string,
   cat: React.PropTypes.number.isRequired
-}
+};
 
 App.defaultProps = {
   txt: "this is the default txt"
-}
+};
 
 const Widget = (props) =>
   <input type="text" onChange={props.update} />
 
 const Button = (props) => <button>{props.children}</button>
+
+const Title = (props) => <h1>Title: {props.text}</h1>
+
+Title.propTypes = {
+  text(props, propName, component) {
+    if(!(propName in props)) {
+      return new Error(`missing ${propName}`)
+    }
+    if (props[propName].length < 6) {
+      return new Error(`${propName} was too short`);
+    }
+  }
+};
 
 export default App;
