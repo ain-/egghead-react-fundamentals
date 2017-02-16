@@ -1,5 +1,7 @@
 import React from 'react';
 import Heart from './Heart';
+import Input from './Input';
+import ReactDOM from 'react-dom';
 
 class App extends React.Component {
   constructor() {
@@ -20,7 +22,7 @@ class App extends React.Component {
     this.setState({currentEvent: e.type});
   }
   update3() {
-    this.setState({a: this.refs.a.value,
+    this.setState({a: ReactDOM.findDOMNode(this.a).value,
       b: this.refs.b.value});
   }
 
@@ -32,7 +34,7 @@ class App extends React.Component {
         <Widget update={this.update.bind(this)} />
         <Widget update={this.update.bind(this)} />
         
-        <h1>{this.state.txt} - {this.state.cat}</h1> 
+        <h1>{txt} + {this.state.txt} - {this.state.cat}</h1> 
         <Button>I <Heart /> React</Button>
         <Title text="123456"/>
         <textarea 
@@ -49,10 +51,9 @@ class App extends React.Component {
 
           cols="30" rows="10"/>
         <h1>{this.state.currentEvent}</h1>
-        <input 
-          ref="a"
-          type="text"
-          onChange={this.update3.bind(this)}
+        <Input 
+          ref={ component => this.a = component }
+          update={this.update3.bind(this)}
         /> {this.state.a}
         <br />
         <input 
