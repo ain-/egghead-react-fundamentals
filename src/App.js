@@ -22,7 +22,7 @@ class App extends React.Component {
     this.setState({currentEvent: e.type});
   }
   update3() {
-    this.setState({a: ReactDOM.findDOMNode(this.a).value,
+    this.setState({a: this.a.refs.input.value,
       b: this.refs.b.value});
   }
 

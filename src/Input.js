@@ -2,7 +2,7 @@ import React from 'react';
 
 class Input extends React.Component {
     render() {
-        return <input type="text" onChange={this.props.update}/>
+        return <div><input ref="input" type="text" onChange={this.props.update}/></div>
     }
 }
 
