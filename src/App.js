@@ -11,9 +11,11 @@ class App extends React.Component {
       cat: 0,
       currentEvent: '---',
       a: '',
-      b: ''
+      b: '',
+      val: 0
     }
     this.update2 = this.update2.bind(this);
+    this.update4 = this.update4.bind(this);
   }
   update(e) {
     this.setState({txt: e.target.value});
@@ -25,12 +27,19 @@ class App extends React.Component {
     this.setState({a: this.a.refs.input.value,
       b: this.refs.b.value});
   }
+  update4() {
+    this.setState({val: this.state.val + 1});
+  }
 
   componentWillMount() {
     console.log('componentWillMount');
+    this.setState({m: 2});
   }
   componentDidMount() {
     console.log('componentDidMount');
+  }
+    componentWillUnmount() {
+    console.log('componentWillUnmount');
   }
 
   render() {
@@ -69,14 +78,14 @@ class App extends React.Component {
           type="text"
           onChange={this.update3.bind(this)}
         /> {this.state.b}
+        <button onClick={this.update4}>{this.state.val * this.state.m}</button>
       </div>
       );
   }
 }
 
 App.propTypes = {
-  txt: React.PropTypes.string,
-  cat: React.PropTypes.number.isRequired
+  txt: React.PropTypes.string
 };
 
 App.defaultProps = {
