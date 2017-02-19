@@ -18,7 +18,7 @@ class Buttons extends React.Component {
         this.state = {selected: 'None'};
     }
 
-    selectedItem(selected) {
+    selectItem(selected) {
         this.setState({selected});
     }
 
